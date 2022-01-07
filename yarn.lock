@@ -228,6 +228,13 @@
   resolved "https://registry.yarnpkg.com/@types/json5/-/json5-0.0.29.tgz#ee28707ae94e11d2b827bcbe5270bcea7f3e71ee"
   integrity sha1-7ihweulOEdK4J7y+UnC86n8+ce4=
 
+"@types/next-auth@^3.15.0":
+  version "3.15.0"
+  resolved "https://registry.yarnpkg.com/@types/next-auth/-/next-auth-3.15.0.tgz#b602f4689b35fff3d2af09500c79ab11c4745bca"
+  integrity sha512-ZVfejlu81YiIRX1m0iKAfvZ3nK7K9EyZWhNARNKsFop8kNAgEvMnlKpTpwN59xkK2OhyWLagPuiDAVBYSO9jSA==
+  dependencies:
+    next-auth "*"
+
 "@types/node@*", "@types/node@^16.9.4":
   version "16.9.4"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-16.9.4.tgz#a12f0ee7847cf17a97f6fdf1093cb7a9af23cca4"
@@ -2052,7 +2059,7 @@ natural-compare@^1.4.0:
   resolved "https://registry.yarnpkg.com/natural-compare/-/natural-compare-1.4.0.tgz#4abebfeed7541f2c27acfb29bdbbd15c8d5ba4f7"
   integrity sha1-Sr6/7tdUHywnrPspvbvRXI1bpPc=
 
-next-auth@^4.0.5:
+next-auth@*, next-auth@^4.0.5:
   version "4.0.5"
   resolved "https://registry.yarnpkg.com/next-auth/-/next-auth-4.0.5.tgz#a41cdbe41f8a8dad42f4b3fb510ef1fb7035667e"
   integrity sha512-POrV6c29Uu3+kVhOe8h3go2ytjeB2jPdW4GJwudUbK6OB++dkpT6yialmm8whM7hyoW4Xy3FbsoldGn8bVHhYg==
