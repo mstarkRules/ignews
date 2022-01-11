@@ -1,5 +1,6 @@
 .contentContainer {
   max-width: 1120px;
+
   margin: 0 auto;
   padding: 0 2rem;
   height: calc(100vh - 5rem);
@@ -10,8 +11,28 @@
   justify-items: center;
   // align-items: center;
   // justify-content: space-between;
-}
 
+  @media (max-width: 580px) {
+    height: calc(100vh - 5rem);
+    padding-top: 50px;
+  }
+
+  @media (max-width: 980px) {
+    grid-template-columns: 1fr;
+    align-content: space-between;
+    align-items: center;
+  }
+
+  // @media (max-width: 1140px) {
+  //   justify-content: center;
+  // }
+}
+.avatar {
+  height: 34rem;
+  @media (max-width: 980px) {
+    height: 18rem;
+  }
+}
 .hero {
   max-width: 600px;
 
