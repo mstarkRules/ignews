@@ -1,0 +1,35 @@
+{
+  "id": "3ce964e0-2ab1-4397-a511-6878526957dd",
+  "uid": "explicabo-sunt-porro",
+  "type": "my-custom-post",
+  "data": {
+    "title": [
+      {
+        "type": "heading1",
+        "text": "Synergize synergistic web-readiness",
+        "spans": []
+      }
+    ],
+    "content": [
+      {
+        "type": "heading1",
+        "text": "Matrix cutting-edge paradigms",
+        "spans": []
+      },
+      {
+        "type": "paragraph",
+        "text": "Amet excepteur mollit officia est id nostrud fugiat incididunt irure laboris ipsum.",
+        "spans": []
+      }
+    ],
+    "image": {
+      "dimensions": {
+        "width": 900,
+        "height": 500
+      },
+      "alt": "Placeholder image",
+      "copyright": null,
+      "url": "https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?w=900&h=500&fit=crop"
+    }
+  }
+}
