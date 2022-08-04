@@ -1,4 +1,8 @@
+import { GetStaticProps } from "next";
 import Head from "next/head";
+import { getPrismicClient } from "../../services/prismic";
+import Prismic from "@prismicio/client";
+
 import styles from "./styles.module.scss";
 
 export default function Posts() {
@@ -36,3 +40,24 @@ export default function Posts() {
     </>
   );
 }
+
+//util porque vamos precisar buscar os dados de posts apenas umas vez
+//depois não precisamos ficar indo na api do prismic buscar novamente
+
+export const getStaticProps: GetStaticProps = async () => {
+  const prismic = getPrismicClient();
+
+  const response = await prismic.query(
+    [Prismic.predicates.at("document.type", "my-custom-post")],
+    {
+      fetch: ["my-custom-post.title", "my-custom-post.content"],
+      pageSize: 100,
+    }
+  );
+
+  console.log("dados response: ", JSON.stringify(response, null, 2));
+
+  return {
+    props: {},
+  };
+};
