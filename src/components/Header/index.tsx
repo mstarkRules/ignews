@@ -1,6 +1,9 @@
 import { SignInButton } from "../SignInButton";
 import styles from "./styles.module.scss";
 
+import Link from "next/link";
+import { ActiveLink } from "../ActiveLink";
+
 export function Header() {
   return (
     <header className={styles.headerContainer}>
@@ -10,10 +13,12 @@ export function Header() {
         </a>
 
         <nav>
-          <a href="/" className={styles.active}>
-            Home
-          </a>
-          <a href="/posts">Posts</a>
+          <ActiveLink activeClassName={styles.active} prefetch href="/">
+            <a>Home</a>
+          </ActiveLink>
+          <ActiveLink activeClassName={styles.active} href="/posts" prefetch>
+            <a>Posts</a>
+          </ActiveLink>
         </nav>
         <SignInButton />
       </div>
