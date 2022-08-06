@@ -2,39 +2,34 @@ import { GetStaticProps } from "next";
 import Head from "next/head";
 import { getPrismicClient } from "../../services/prismic";
 import Prismic from "@prismicio/client";
+import { RichText } from "prismic-dom";
 
 import styles from "./styles.module.scss";
 
-export default function Posts() {
+interface PostsProps {
+  posts: Post[];
+}
+
+interface Post {
+  slug: string;
+  title: string;
+  excerpt: string;
+  updatedAt: string;
+}
+
+export default function Posts({ posts }: PostsProps) {
   return (
     <>
       <Head>Posts | Ignews</Head>
       <main className={styles.container}>
         <div className={styles.posts}>
-          <a href="">
-            <time>4 de janeiro de 2022</time>
-            <strong>How I code for 8 hours without feeling tired</strong>
-            <p>
-              I thought it was okay to just sit down at my desk, open my laptop,
-              take a task from my To-Do list, and code until I felt tired.
-            </p>
-          </a>
-          <a href="">
-            <time>4 de janeiro de 2022</time>
-            <strong>How I code for 8 hours without feeling tired</strong>
-            <p>
-              I thought it was okay to just sit down at my desk, open my laptop,
-              take a task from my To-Do list, and code until I felt tired.
-            </p>
-          </a>
-          <a href="">
-            <time>4 de janeiro de 2022</time>
-            <strong>How I code for 8 hours without feeling tired</strong>
-            <p>
-              I thought it was okay to just sit down at my desk, open my laptop,
-              take a task from my To-Do list, and code until I felt tired.
-            </p>
-          </a>
+          {posts.map((post) => (
+            <a href="">
+              <time>{post.updatedAt}</time>
+              <strong>{post.title}</strong>
+              <p>{post.excerpt}</p>
+            </a>
+          ))}
         </div>
       </main>
     </>
@@ -55,9 +50,27 @@ export const getStaticProps: GetStaticProps = async () => {
     }
   );
 
-  console.log("dados response: ", JSON.stringify(response, null, 2));
+  const posts = response.results.map((post) => {
+    return {
+      slug: post.uid,
+      title: RichText.asText(post.data.title),
+      excerpt:
+        post.data.content.find((content) => content.type === "paragraph")
+          ?.text ?? "",
+      updatedAt: new Date(post.last_publication_date).toLocaleDateString(
+        "pt-BR",
+        {
+          day: "2-digit",
+          month: "long",
+          year: "numeric",
+        }
+      ),
+    };
+  });
 
   return {
-    props: {},
+    props: {
+      posts,
+    },
   };
 };
