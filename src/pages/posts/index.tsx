@@ -5,6 +5,7 @@ import Prismic from "@prismicio/client";
 import { RichText } from "prismic-dom";
 
 import styles from "./styles.module.scss";
+import Link from "next/link";
 
 interface PostsProps {
   posts: Post[];
@@ -18,17 +19,22 @@ interface Post {
 }
 
 export default function Posts({ posts }: PostsProps) {
+  let nowT = new Date();
+  console.log("data de hoje: ", nowT);
+
   return (
     <>
       <Head>Posts | Ignews</Head>
       <main className={styles.container}>
         <div className={styles.posts}>
           {posts.map((post) => (
-            <a href="">
-              <time>{post.updatedAt}</time>
-              <strong>{post.title}</strong>
-              <p>{post.excerpt}</p>
-            </a>
+            <Link href={`/posts/${post.slug}`}>
+              <a>
+                <time>{post.updatedAt}</time>
+                <strong>{post.title}</strong>
+                <p>{post.excerpt}</p>
+              </a>
+            </Link>
           ))}
         </div>
       </main>
@@ -68,9 +74,14 @@ export const getStaticProps: GetStaticProps = async () => {
     };
   });
 
+  console.log("postsss: ", posts);
+  let now = new Date();
+  console.log("data> as", now);
+
   return {
     props: {
       posts,
     },
+    revalidate: 30,
   };
 };
